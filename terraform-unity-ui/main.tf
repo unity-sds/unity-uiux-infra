@@ -22,8 +22,9 @@ data "aws_ssm_parameter" "cognito_user_pool" {
 }
 
 # todo: Get this param added to SSM
+# Reference: https://github.com/unity-sds/unity-cs/issues/375
 data "aws_ssm_parameter" "cloudfront_distribution_id" {
-  name = "/unity/cs/networking/shared-services-cloudfront/cloudfront-distribution-id"
+  name = "/unity/shared-services/cloudfront/distribution"
 }
 
 data "aws_cloudfront_distribution" "cloudfront_distribution" {
