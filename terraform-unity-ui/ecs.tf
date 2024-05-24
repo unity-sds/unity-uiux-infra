@@ -65,11 +65,11 @@ resource "aws_ecs_task_definition" "ui_application_task_definition" {
       },
       {
         name = "ENV_UNITY_UI_AUTH_OAUTH_LOGOUT_ENDPOINT"
-        value = (var.venue == "dev" ? var.cognito_dev_logout_url : (var.venue == "test" ? var.cognito_test_logout_url : (var.venue == "prod" ? var.cognito_prod_logout_url : "")))
+        value = "${data.aws_ssm_parameter.cognito_domain}/logout"
       },
       {
         name = "ENV_UNITY_UI_AUTH_OAUTH_PROVIDER_URL"
-        value = (var.venue == "dev" ? var.cognito_dev_provider_url : (var.venue == "test" ? var.cognito_test_provider_url : (var.venue == "prod" ? var.cognito_prod_provider_url : "")))
+        value = "${data.aws_ssm_parameter.cognito_domain}/oauth2"
       },
       {
         name = "ENV_UNITY_UI_AUTH_APP_ADMIN_GROUP_NAME"
