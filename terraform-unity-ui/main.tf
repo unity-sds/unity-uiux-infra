@@ -9,7 +9,7 @@ data "aws_ssm_parameter" "subnet_list" {
 }
 
 data "aws_ssm_parameter" "proxylambda" {
-  name = "/unity/cs/management/proxy/${var.installprefix}-httpd-lambda-name"
+  name = "/unity/${var.project}/${var.venue}/cs/management/proxy/lambda-name"
 }
 
 data "aws_iam_policy" "mcp_operator_policy" {
