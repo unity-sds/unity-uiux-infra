@@ -20,17 +20,6 @@ variable "region" {
   default     = "us-west-2"
 }
 
-variable "release" {
-  description = "The UI release version"
-  type        = string
-}
-
-variable "service_area" {
-  description = "The service area owner of the resources being deployed"
-  type        = string
-  default     = "uiux"
-}
-
 variable "tags" {
   description = "AWS Tags"
   type        = map(string)
