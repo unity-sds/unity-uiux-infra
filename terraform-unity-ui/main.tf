@@ -29,11 +29,6 @@ data "aws_ssm_parameter" "cognito_domain" {
   name = "arn:aws:ssm:us-west-2:${data.aws_ssm_parameter.ssAcctNum}:parameter/unity/shared-services/cognito/domain"
 }
 
-
-data "aws_iam_policy" "mcp_operator_policy" {
-  name = "mcp-tenantOperator-AMI-APIG"
-}
-
 data "aws_cognito_user_pool_client" "unity_ui_client" {
   client_id = unity_ui_cognito_client_id
   user_pool_id = data.aws_ssm_parameter.cognito_user_pool.id
