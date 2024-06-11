@@ -14,7 +14,7 @@ resource "aws_lb" "ui_application_alb" {
 # Create a Target Group for UI Application
 resource "aws_lb_target_group" "ui_application_tg" {
   name     = "${var.deployment_name}-ui-application-tg"
-  port     = 8888
+  port     = 8080
   protocol = "HTTP"
   vpc_id   = data.aws_ssm_parameter.vpc_id.value
   target_type = "ip"
@@ -36,7 +36,7 @@ resource "aws_lb_target_group" "ui_application_tg" {
 # Create a Listener for the ALB that forwards requests to the httpd Target Group
 resource "aws_lb_listener" "ui_application_listener" {
   load_balancer_arn = aws_lb.ui_application_alb.arn
-  port              = 8888
+  port              = 8080
   protocol          = "HTTP"
 
   default_action {

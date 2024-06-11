@@ -102,8 +102,8 @@ resource "aws_ecs_task_definition" "ui_application_task_definition" {
     ]
     portMappings = [
       {
-        containerPort = 8888
-        hostPort      = 8888
+        containerPort = 8080
+        hostPort      = 8080
       }
     ]
     mountPoints = [
@@ -126,8 +126,8 @@ resource "aws_security_group" "ecs_sg" {
   // Inbound rules
   // Example: Allow HTTP and HTTPS
   ingress {
-    from_port   = 8888
-    to_port     = 8888
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -157,7 +157,7 @@ resource "aws_ecs_service" "ui_application_service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.ui_application_tg.arn
     container_name   = "ui-application"
-    container_port   = 8888
+    container_port   = 8080
   }
 
   network_configuration {
