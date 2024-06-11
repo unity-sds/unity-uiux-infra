@@ -61,7 +61,7 @@ resource "aws_ecs_task_definition" "ui_application_task_definition" {
       },
       {
         name = "ENV_UNITY_UI_AUTH_OAUTH_REDIRECT_URI"
-        value = "${data.aws_cloudfront_distribution.cloudfront_distribution.domain_name}/dashboard"
+        value = "https://www.dev.mdps.mcp.nasa.gov:4443/${var.project}/${var.venue}/dashboard"
       },
       {
         name = "ENV_UNITY_UI_AUTH_OAUTH_LOGOUT_ENDPOINT"
@@ -85,7 +85,7 @@ resource "aws_ecs_task_definition" "ui_application_task_definition" {
       },
       {
         name = "ENV_UNITY_UI_SPS_WPST_ENDPOINT"
-        value = "${data.aws_cloudfront_distribution.cloudfront_distribution.domain_name}/ades-wpst"
+        value = "https://www.dev.mdps.mcp.nasa.gov:4443/${var.project}/${var.venue}/ades-wpst"
       },
       {
         name = "ENV_UNITY_UI_HEALTH_DASHBOARD_ENDPOINT"

@@ -29,15 +29,6 @@ data "aws_ssm_parameter" "cognito_domain" {
   name = "arn:aws:ssm:us-west-2:${data.aws_ssm_parameter.ssAcctNum}:parameter/unity/shared-services/cognito/domain"
 }
 
-# todo: Get this param added to SSM
-# Reference: https://github.com/unity-sds/unity-cs/issues/375
-data "aws_ssm_parameter" "cloudfront_distribution_id" {
-  name = "/unity/shared-services/cloudfront/distribution"
-}
-
-data "aws_cloudfront_distribution" "cloudfront_distribution" {
-  id = data.aws_ssm_parameter.cloudfront_distribution_id
-}
 
 data "aws_iam_policy" "mcp_operator_policy" {
   name = "mcp-tenantOperator-AMI-APIG"
