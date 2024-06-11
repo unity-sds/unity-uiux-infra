@@ -5,7 +5,7 @@
 
 resource "aws_cognito_user_pool_client" "userpool_client" {
   name = "${var.deployment_name}-unity-ui-client"
-  user_pool_id = data.aws_ssm_parameter.cognito_user_pool.id
+  user_pool_id = data.aws_ssm_parameter.cognito_user_pool.value
   access_token_validity = 60
   allowed_oauth_flows = ["code"]
   allowed_oauth_flows_user_pool_client = true
@@ -29,6 +29,7 @@ resource "aws_cognito_user_pool_client" "userpool_client" {
   }
 }
 
-output "unity_ui_cognito_client_id" {
-  value = aws_cognito_user_pool_client.userpool_client.id
+data "aws_cognito_user_pool_client" "unity_ui_client" {
+  client_id = aws_cognito_user_pool_client.userpool_client.id
+  user_pool_id = data.aws_ssm_parameter.cognito_user_pool.id
 }

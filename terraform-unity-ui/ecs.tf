@@ -57,7 +57,7 @@ resource "aws_ecs_task_definition" "ui_application_task_definition" {
       },
       {
         name = "ENV_UNITY_UI_AUTH_OAUTH_CLIENT_ID"
-        valueFrom = unity_ui_cognito_client_id
+        value = data.aws_cognito_user_pool_client.unity_ui_client.id
       },
       {
         name = "ENV_UNITY_UI_AUTH_OAUTH_REDIRECT_URI"
@@ -65,11 +65,11 @@ resource "aws_ecs_task_definition" "ui_application_task_definition" {
       },
       {
         name = "ENV_UNITY_UI_AUTH_OAUTH_LOGOUT_ENDPOINT"
-        value = "${data.aws_ssm_parameter.cognito_domain}/logout"
+        value = "${data.aws_ssm_parameter.cognito_domain.value}/logout"
       },
       {
         name = "ENV_UNITY_UI_AUTH_OAUTH_PROVIDER_URL"
-        value = "${data.aws_ssm_parameter.cognito_domain}/oauth2"
+        value = "${data.aws_ssm_parameter.cognito_domain.value}/oauth2"
       },
       {
         name = "ENV_UNITY_UI_AUTH_APP_ADMIN_GROUP_NAME"
