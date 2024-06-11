@@ -15,9 +15,8 @@ variable "project" {
 }
 
 variable "region" {
-  description = "The AWS region"
+  description = "The region in which region scoped services should be deployed."
   type        = string
-  default     = "us-west-2"
 }
 
 variable "tags" {
