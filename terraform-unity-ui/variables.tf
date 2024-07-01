@@ -1,3 +1,15 @@
+variable "app_count" {
+  default = 2
+  description = "The minimum number of application containers to run in the cluster"
+  type = number
+}
+
+variable "app_image" {
+  description = "The docker image to run the application."
+  default = "ghcr.io/unity-sds/unity-ui/unity-ui-application:latest"
+  type = string
+}
+
 variable "deployment_name" {
   description = "Unique name of this deployment in the account."
   type        = string
@@ -6,7 +18,6 @@ variable "deployment_name" {
 variable "installprefix" {
   description = "The management console install prefix"
   type        = string
-  default     = "unity-ui"
 }
 
 variable "project" {
@@ -24,15 +35,12 @@ variable "tags" {
   type        = map(string)
 }
 
-variable "template" {
-  default = <<EOT
-                  RewriteEngine on
-                  ProxyPass /dashboard http://test-demo-alb-616613476.us-west-2.elb.amazonaws.com:8888/dashboard/hello.jsp
-                  ProxyPassReverse /dashboard http://test-demo-alb-616613476.us-west-2.elb.amazonaws.com:8888/dashboard/hello.jsp
-EOT
-}
-
 variable "venue" {
   description = "The MCP venue in which the cluster will be deployed (dev, test, prod)"
+  type        = string
+}
+
+variable "cognito_client_id" {
+  description = "The Cognito App Client ID"
   type        = string
 }
