@@ -4,7 +4,7 @@ resource "aws_ssm_parameter" "uiux_dashboard_proxy_config" {
   type       = "String"
   value      = <<-EOT
 
-    <location /dashboard>
+    <location "/${var.project}/${var.venue}/dashboard">
       ProxyHTMLEnable on
       RequestHeader unset Accept-Encoding
       ProxyHTMLCHarsetOut *
