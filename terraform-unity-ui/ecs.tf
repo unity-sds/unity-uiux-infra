@@ -16,12 +16,16 @@ resource "aws_ecs_task_definition" "app" {
         image = var.app_image
         environment = [
           {
-            name = "ENV_UNITY_UI_BASE_URL"
-            value = "/${var.project}/${var.venue}/dashboard"
+            name = "ENV_UNITY_UI_ADMIN_EMAIL"
+            value = ""
           },
           {
-            name = "ENV_UNITY_UI_HEALTH_API_ENDPOINT"
-            value = "https://www.${data.aws_ssm_parameter.shared_services_domain.value}:4443/${var.project}/${var.venue}/management/api/health_checks"
+            name = "ENV_UNITY_UI_WWW_DOMAIN"
+            value = "www.${data.aws_ssm_parameter.shared_services_domain.value}"
+          },
+          {
+            name = "ENV_UNITY_UI_BASE_PATH"
+            value = "/${var.project}/${var.venue}/dashboard"
           },
           {
             name = "ENV_UNITY_UI_AUTH_OAUTH_CLIENT_ID"
@@ -46,8 +50,12 @@ resource "aws_ecs_task_definition" "app" {
           {
             name = "ENV_UNITY_UI_AUTH_APP_APP_VIEWER_GROUP_NAME"
             value = "Unity_Viewer"
-          }
-        ]  // todo:define:environment variables
+          },
+          {
+            name = "ENV_UNITY_UI_HEALTH_API_ENDPOINT"
+            value = "https://www.${data.aws_ssm_parameter.shared_services_domain.value}:4443/${var.project}/${var.venue}/management/api/health_checks"
+          },
+        ]
         portMappings = [
           {
             containerPort = 8080
