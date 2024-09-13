@@ -3,11 +3,3 @@ locals {
   private_subnet_ids = nonsensitive(local.subnet_map["private"])
   public_subnet_ids = nonsensitive(local.subnet_map["public"])
 }
-
-###############################################################
-# Providers must be specified to run terraform commands locally
-
-# Unity-Venue-Dev
-provider "aws" {
-  region = var.region
-}

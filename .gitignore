@@ -6,6 +6,9 @@
 # Local .terraform directories
 **/.terraform/*
 
+# Provider files (The Unity Marketplace takes care of applying the provider)
+providers.tf
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
