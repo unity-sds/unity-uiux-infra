@@ -10,37 +10,37 @@ variable "app_image" {
   type = string
 }
 
+// Injected by Marketplace
 variable "deployment_name" {
   description = "Unique name of this deployment in the account."
   type        = string
 }
 
+// Injected by Marketplace
 variable "installprefix" {
   description = "The management console install prefix"
   type        = string
 }
 
+// Injected by Marketplace
 variable "project" {
   description = "The project or mission deploying Unity SPS"
   type        = string
 }
 
-variable "region" {
-  description = "The region in which region scoped services should be deployed."
-  type        = string
-}
-
+// Injected by Marketplace
 variable "tags" {
   description = "AWS Tags"
   type        = map(string)
 }
 
+// Injected by Marketplace
 variable "venue" {
   description = "The MCP venue in which the cluster will be deployed (dev, test, prod)"
   type        = string
 }
 
-variable "cognito_client_id" {
+/* variable "cognito_client_id" {
   description = "The Cognito App Client ID"
   type        = string
-}
+} */
