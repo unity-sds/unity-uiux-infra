@@ -53,7 +53,7 @@ resource "aws_ecs_task_definition" "app" {
           },
           {
             name = "ENV_UNITY_UI_HEALTH_API_ENDPOINT"
-            value = "https://www.${data.aws_ssm_parameter.shared_services_domain.value}:4443/${var.project}/${var.venue}/management/api/health_checks"
+            value = "https://api.dev.mdps.mcp.nasa.gov/${var.project}/${var.venue}/management/api/health_checks"
           },
         ]
         portMappings = [
