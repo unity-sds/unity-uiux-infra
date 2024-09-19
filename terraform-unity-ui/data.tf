@@ -20,7 +20,7 @@ data "aws_ssm_parameter" "vpc_id" {
 }
 
 data "aws_ssm_parameter" "shared_services_domain" {
-  name = "arn:aws:ssm:us-west-2:${data.aws_ssm_parameter.ssAcctNum.value}:parameter/unity/shared-services/domain"
+  name = "arn:aws:ssm:${data.aws_ssm_parameter.aws_account_region.value}:${data.aws_ssm_parameter.ssAcctNum.value}:parameter/unity/shared-services/domain"
 }
 
 data "aws_ssm_parameter" "aws_account_region" {
