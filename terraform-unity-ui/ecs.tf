@@ -16,6 +16,14 @@ resource "aws_ecs_task_definition" "app" {
         image = var.app_image
         environment = [
           {
+            name = "ENV_UNITY_UI_PROJECT"
+            value = "${var.project}"
+          },
+          {
+            name = "ENV_UNITY_UI_VENUE"
+            value = "${var.venue}"
+          },
+          {
             name = "ENV_UNITY_UI_ADMIN_EMAIL"
             value = ""
           },
