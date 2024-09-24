@@ -4,7 +4,7 @@ data "aws_ssm_parameter" "ssAcctNum" {
 }
 
 data "aws_ssm_parameter" "cognito_domain" {
-  name = "/unity/shared-services/cognito/domain"
+  name = "arn:aws:ssm:${data.aws_ssm_parameter.aws_account_region.value}:${data.aws_ssm_parameter.ssAcctNum.value}:parameter/unity/shared-services/cognito/domain"
 }
 
 data "aws_iam_policy" "mcp_operator_policy" {
