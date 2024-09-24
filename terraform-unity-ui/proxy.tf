@@ -13,7 +13,7 @@ resource "aws_ssm_parameter" "uiux_dashboard_proxy_config" {
       Header always set Strict-Transport-Security "max-age=63072000"
       ProxyPass http://${aws_lb.main.dns_name}:8080/
       ProxyPassReverse http://${aws_lb.main.dns_name}:8080/
-      ProxyHTMLURLMap / /unity/dev/dashboard/
+      ProxyHTMLURLMap / /${var.project}/${var.venue}/dashboard/
     </location>
 
 EOT
