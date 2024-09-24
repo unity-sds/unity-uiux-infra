@@ -41,7 +41,7 @@ resource "aws_ecs_task_definition" "app" {
           }, */
           {
             name = "ENV_UNITY_UI_AUTH_OAUTH_REDIRECT_URI"
-            value = "https://${data.aws_ssm_parameter.shared_services_domain.value}:4443/${var.project}/${var.venue}/dashboard"
+            value = "https://www.${data.aws_ssm_parameter.shared_services_domain.value}:4443/${var.project}/${var.venue}/dashboard"
           },
           {
             name = "ENV_UNITY_UI_AUTH_OAUTH_LOGOUT_ENDPOINT"
@@ -61,7 +61,7 @@ resource "aws_ecs_task_definition" "app" {
           },
           {
             name = "ENV_UNITY_UI_HEALTH_API_ENDPOINT"
-            value = "https://api.dev.mdps.mcp.nasa.gov/${var.project}/${var.venue}/management/api/health_checks"
+            value = "https://api.${data.aws_ssm_parameter.shared_services_domain.value}/${var.project}/${var.venue}/management/api/health_checks"
           },
         ]
         portMappings = [
