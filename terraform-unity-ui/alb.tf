@@ -1,5 +1,5 @@
 resource "aws_lb" "main" {
-  name = "${var.deployment_name}-dashboard-lb"
+  name = "${var.project}-${var.venue}-dashboard-lb"
   internal = false
   load_balancer_type = "application"
   subnets = local.public_subnet_ids
@@ -8,7 +8,7 @@ resource "aws_lb" "main" {
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = "${var.deployment_name}-dashboard-tg"
+  name        = "${var.project}-${var.venue}-dashboard-tg"
   port        = 8080
   protocol    = "HTTP"
   vpc_id      = data.aws_ssm_parameter.vpc_id.value

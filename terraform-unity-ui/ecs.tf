@@ -1,9 +1,9 @@
 resource "aws_ecs_cluster" "main" {
-  name = "${var.deployment_name}-dashboard-cluster"
+  name = "${var.project}-${var.venue}-dashboard-cluster"
 }
 
 resource "aws_ecs_task_definition" "app" {
-  family = "${var.deployment_name}-dashboard-app"
+  family = "${var.project}-${var.venue}-dashboard-app"
   execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
   network_mode = "awsvpc"
   requires_compatibilities = ["FARGATE"]
@@ -76,7 +76,7 @@ resource "aws_ecs_task_definition" "app" {
 }
 
 resource "aws_ecs_service" "main" {
-  name            = "${var.deployment_name}-dashboard-service"
+  name            = "${var.project}-${var.venue}-dashboard-service"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = var.app_count
