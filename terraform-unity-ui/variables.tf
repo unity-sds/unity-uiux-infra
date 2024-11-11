@@ -49,8 +49,3 @@ variable "venue" {
   description = "The MCP venue in which the cluster will be deployed (dev, test, prod)"
   type        = string
 }
-
-/* variable "cognito_client_id" {
-  description = "The Cognito App Client ID"
-  type        = string
-} */

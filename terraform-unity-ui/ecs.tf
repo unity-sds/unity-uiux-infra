@@ -39,10 +39,6 @@ resource "aws_ecs_task_definition" "app" {
             name = "ENV_UNITY_UI_BASE_PATH"
             value = "/${var.project}/${var.venue}/dashboard"
           },
-          /* {
-            name = "ENV_UNITY_UI_AUTH_OAUTH_CLIENT_ID"
-            value = var.cognito_client_id
-          }, */
           {
             name = "ENV_UNITY_UI_AUTH_OAUTH_REDIRECT_URI"
             value = "https://www.${data.aws_ssm_parameter.shared_services_domain.value}:4443/${var.project}/${var.venue}/dashboard"
