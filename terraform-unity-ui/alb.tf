@@ -5,6 +5,10 @@ resource "aws_lb" "main" {
   subnets = local.public_subnet_ids
   security_groups = [aws_security_group.ecs_sg.id]
   enable_deletion_protection = false
+  tags = merge(
+    var.tags,
+    {},
+  )
 }
 
 resource "aws_alb_target_group" "app" {
@@ -23,12 +27,20 @@ resource "aws_alb_target_group" "app" {
     timeout             = 5
     unhealthy_threshold = 2
   }
+  tags = merge(
+    var.tags,
+    {},
+  )
 }
 
 resource "aws_alb_listener" "front_end" {
   load_balancer_arn = aws_lb.main.id
   port = 8080
   protocol = "HTTP"
+  tags = merge(
+    var.tags,
+    {},
+  )
 
   default_action {
     type = "forward"

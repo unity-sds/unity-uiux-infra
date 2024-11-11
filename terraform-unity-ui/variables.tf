@@ -30,8 +30,18 @@ variable "project" {
 
 // Injected by Marketplace
 variable "tags" {
-  description = "AWS Tags"
+  description = "Tags to be applied to Unity UI resources that support tags"
   type        = map(string)
+  default     = {
+    Venue = "dev",
+    ServiceArea = "uiux",
+    CapVersion = "0.8.0"
+    Component = "Navbar",
+    Proj = "Unity",
+    CreatedBy = "uiux",
+    Env = "dev",
+    Stack = "UI"
+  }
 }
 
 // Injected by Marketplace
