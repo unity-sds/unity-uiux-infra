@@ -1,5 +1,9 @@
 resource "aws_ecs_cluster" "main" {
   name = "${var.project}-${var.venue}-dashboard-cluster"
+  tags = merge(
+    var.tags,
+    {},
+  )
 }
 
 resource "aws_ecs_task_definition" "app" {
@@ -35,10 +39,6 @@ resource "aws_ecs_task_definition" "app" {
             name = "ENV_UNITY_UI_BASE_PATH"
             value = "/${var.project}/${var.venue}/dashboard"
           },
-          /* {
-            name = "ENV_UNITY_UI_AUTH_OAUTH_CLIENT_ID"
-            value = var.cognito_client_id
-          }, */
           {
             name = "ENV_UNITY_UI_AUTH_OAUTH_REDIRECT_URI"
             value = "https://www.${data.aws_ssm_parameter.shared_services_domain.value}:4443/${var.project}/${var.venue}/dashboard"
@@ -73,6 +73,10 @@ resource "aws_ecs_task_definition" "app" {
       }
     ]
   )
+  tags = merge(
+    var.tags,
+    {},
+  )
 }
 
 resource "aws_ecs_service" "main" {
@@ -81,6 +85,10 @@ resource "aws_ecs_service" "main" {
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = var.app_count
   launch_type     = "FARGATE"
+  tags = merge(
+    var.tags,
+    {},
+  )
 
   network_configuration {
     security_groups = [aws_security_group.ecs_sg.id]

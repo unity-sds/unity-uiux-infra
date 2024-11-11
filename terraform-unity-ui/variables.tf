@@ -30,8 +30,18 @@ variable "project" {
 
 // Injected by Marketplace
 variable "tags" {
-  description = "AWS Tags"
+  description = "Tags to be applied to Unity UI resources that support tags"
   type        = map(string)
+  default     = {
+    Venue = "dev",
+    ServiceArea = "uiux",
+    CapVersion = "0.8.0"
+    Component = "Navbar",
+    Proj = "Unity",
+    CreatedBy = "uiux",
+    Env = "dev",
+    Stack = "UI"
+  }
 }
 
 // Injected by Marketplace
@@ -39,8 +49,3 @@ variable "venue" {
   description = "The MCP venue in which the cluster will be deployed (dev, test, prod)"
   type        = string
 }
-
-/* variable "cognito_client_id" {
-  description = "The Cognito App Client ID"
-  type        = string
-} */
