@@ -2,8 +2,16 @@ resource "aws_ecs_cluster" "main" {
   name = "${var.project}-${var.venue}-dashboard-cluster"
   tags = merge(
     var.tags,
-    var.default_tags,
-    {},
+    {
+      Venue = "dev",
+      ServiceArea = "uiux",
+      CapVersion = "0.8.0"
+      Component = "Navbar",
+      Proj = "Unity",
+      CreatedBy = "uiux",
+      Env = "dev",
+      Stack = "UI"
+    }
   )
 }
 
@@ -76,8 +84,16 @@ resource "aws_ecs_task_definition" "app" {
   )
   tags = merge(
     var.tags,
-    var.default_tags,
-    {},
+    {
+      Venue = "dev",
+      ServiceArea = "uiux",
+      CapVersion = "0.8.0"
+      Component = "Navbar",
+      Proj = "Unity",
+      CreatedBy = "uiux",
+      Env = "dev",
+      Stack = "UI"
+    }
   )
 }
 
@@ -89,8 +105,16 @@ resource "aws_ecs_service" "main" {
   launch_type     = "FARGATE"
   tags = merge(
     var.tags,
-    var.default_tags,
-    {},
+    {
+      Venue = "dev",
+      ServiceArea = "uiux",
+      CapVersion = "0.8.0"
+      Component = "Navbar",
+      Proj = "Unity",
+      CreatedBy = "uiux",
+      Env = "dev",
+      Stack = "UI"
+    }
   )
 
   network_configuration {

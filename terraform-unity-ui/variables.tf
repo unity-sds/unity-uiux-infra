@@ -34,21 +34,6 @@ variable "tags" {
   type        = map(string)
 }
 
-variable "default_tags" {
-  description = ""
-  type        = map(string)
-  default     = {
-    Venue = "dev",
-    ServiceArea = "uiux",
-    CapVersion = "0.8.0"
-    Component = "Navbar",
-    Proj = "Unity",
-    CreatedBy = "uiux",
-    Env = "dev",
-    Stack = "UI"
-  }
-}
-
 // Injected by Marketplace
 variable "venue" {
   description = "The MCP venue in which the cluster will be deployed (dev, test, prod)"
