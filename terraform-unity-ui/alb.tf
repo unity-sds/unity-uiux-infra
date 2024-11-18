@@ -7,6 +7,7 @@ resource "aws_lb" "main" {
   enable_deletion_protection = false
   tags = merge(
     var.tags,
+    var.default_tags,
     {},
   )
 }
@@ -29,6 +30,7 @@ resource "aws_alb_target_group" "app" {
   }
   tags = merge(
     var.tags,
+    var.default_tags,
     {},
   )
 }
@@ -39,6 +41,7 @@ resource "aws_alb_listener" "front_end" {
   protocol = "HTTP"
   tags = merge(
     var.tags,
+    var.default_tags,
     {},
   )
 
