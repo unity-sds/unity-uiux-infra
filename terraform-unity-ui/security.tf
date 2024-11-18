@@ -4,6 +4,7 @@ resource "aws_security_group" "ecs_sg" {
   vpc_id = data.aws_ssm_parameter.vpc_id.value
   tags = merge(
     var.tags,
+    var.default_tags,
     {},
   )
 

@@ -32,6 +32,11 @@ variable "project" {
 variable "tags" {
   description = "Tags to be applied to Unity UI resources that support tags"
   type        = map(string)
+}
+
+variable "default_tags" {
+  description = ""
+  type        = map(string)
   default     = {
     Venue = "dev",
     ServiceArea = "uiux",
