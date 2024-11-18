@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added 
 
 - Added tags specification for resources managed by terraform configuration [#4](https://github.com/unity-sds/unity-ui-infra/issues/4)
+- Fixed how tags are specified to resolve issue when Terraform code is executed [#9](https://github.com/unity-sds/unity-ui-infra/issues/9)
 
 ## [0.1.0] 2024-04-15
 
