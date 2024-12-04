@@ -45,7 +45,7 @@ variable "default_tags" {
     Proj = "Unity"
     CreatedBy = "uiux"
     Env = "dev"
-    Stack = "UI"
+    Stack = "ui"
   }
 }
 
