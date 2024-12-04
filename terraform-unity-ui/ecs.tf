@@ -1,9 +1,6 @@
 resource "aws_ecs_cluster" "main" {
   name = "${var.project}-${var.venue}-dashboard-cluster"
-  tags = merge(
-    var.tags,
-    var.default_tags
-  )
+  tags = var.additional_tags
 }
 
 resource "aws_ecs_task_definition" "app" {
@@ -73,10 +70,7 @@ resource "aws_ecs_task_definition" "app" {
       }
     ]
   )
-  tags = merge(
-    var.tags,
-    var.default_tags
-  )
+  tags = var.additional_tags
 }
 
 resource "aws_ecs_service" "main" {
@@ -85,10 +79,7 @@ resource "aws_ecs_service" "main" {
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = var.app_count
   launch_type     = "FARGATE"
-  tags = merge(
-    var.tags,
-    var.default_tags
-  )
+  tags = var.additional_tags
 
   network_configuration {
     security_groups = [aws_security_group.ecs_sg.id]
