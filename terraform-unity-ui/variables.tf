@@ -34,18 +34,18 @@ variable "tags" {
   type        = map(string)
 }
 
-variable "default_tags" {
-  description = ""
+variable "additional_tags" {
+  description = "Additional Resource Tags"
   type        = map(string)
   default     = {
     Venue = "dev"
     ServiceArea = "uiux"
     CapVersion = "0.8.0"
-    Component = "Navbar"
+    Component = "navbar"
     Proj = "Unity"
     CreatedBy = "uiux"
     Env = "dev"
-    Stack = "UI"
+    Stack = "ui"
   }
 }
 

@@ -2,8 +2,7 @@ resource "aws_ecs_cluster" "main" {
   name = "${var.project}-${var.venue}-dashboard-cluster"
   tags = merge(
     var.tags,
-    var.default_tags,
-    {},
+    var.additional_tags
   )
 }
 
@@ -76,8 +75,7 @@ resource "aws_ecs_task_definition" "app" {
   )
   tags = merge(
     var.tags,
-    var.default_tags,
-    {},
+    var.additional_tags
   )
 }
 
@@ -89,8 +87,7 @@ resource "aws_ecs_service" "main" {
   launch_type     = "FARGATE"
   tags = merge(
     var.tags,
-    var.default_tags,
-    {},
+    var.additional_tags
   )
 
   network_configuration {
