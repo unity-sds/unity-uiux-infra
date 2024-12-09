@@ -42,7 +42,7 @@ variable "additional_tags" {
     ServiceArea = "uiux"
     CapVersion = "0.8.0"
     Component = "navbar"
-    Proj = "Unity"
+    Proj = "unity"
     CreatedBy = "uiux"
     Env = "dev"
     Stack = "ui"
