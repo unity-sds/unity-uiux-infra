@@ -27,16 +27,19 @@ resource "aws_alb_target_group" "app" {
     timeout             = 5
     unhealthy_threshold = 2
   }
+
   tags = merge(
     var.tags,
     var.additional_tags
   )
+
 }
 
 resource "aws_alb_listener" "front_end" {
   load_balancer_arn = aws_lb.main.id
   port = 8080
   protocol = "HTTP"
+
   tags = merge(
     var.tags,
     var.additional_tags

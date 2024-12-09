@@ -2,6 +2,7 @@ resource "aws_security_group" "ecs_sg" {
   name = "${var.project}-${var.venue}-dashboard-ecs-sg"
   description = "Security group for the dashboard ECS Service"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
+  
   tags = merge(
     var.tags,
     var.additional_tags
