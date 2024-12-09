@@ -2,7 +2,16 @@ resource "aws_security_group" "ecs_sg" {
   name = "${var.project}-${var.venue}-dashboard-ecs-sg"
   description = "Security group for the dashboard ECS Service"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
-  tags = var.additional_tags
+  tags = {
+    Venue = "dev"
+    ServiceArea = "uiux"
+    CapVersion = "0.8.0"
+    Component = "navbar"
+    Proj = "Unity"
+    CreatedBy = "uiux"
+    Env = "dev"
+    Stack = "ui"
+  }
 
   // Inbound rules
   // Example: Allow HTTP and HTTPS

@@ -5,7 +5,16 @@ resource "aws_lb" "main" {
   subnets = local.public_subnet_ids
   security_groups = [aws_security_group.ecs_sg.id]
   enable_deletion_protection = false
-  tags = var.additional_tags
+  tags = {
+    Venue = "dev"
+    ServiceArea = "uiux"
+    CapVersion = "0.8.0"
+    Component = "navbar"
+    Proj = "Unity"
+    CreatedBy = "uiux"
+    Env = "dev"
+    Stack = "ui"
+  }
 }
 
 resource "aws_alb_target_group" "app" {
@@ -24,14 +33,32 @@ resource "aws_alb_target_group" "app" {
     timeout             = 5
     unhealthy_threshold = 2
   }
-  tags = var.additional_tags
+  tags = {
+    Venue = "dev"
+    ServiceArea = "uiux"
+    CapVersion = "0.8.0"
+    Component = "navbar"
+    Proj = "Unity"
+    CreatedBy = "uiux"
+    Env = "dev"
+    Stack = "ui"
+  }
 }
 
 resource "aws_alb_listener" "front_end" {
   load_balancer_arn = aws_lb.main.id
   port = 8080
   protocol = "HTTP"
-  tags = var.additional_tags
+  tags = {
+    Venue = "dev"
+    ServiceArea = "uiux"
+    CapVersion = "0.8.0"
+    Component = "navbar"
+    Proj = "Unity"
+    CreatedBy = "uiux"
+    Env = "dev"
+    Stack = "ui"
+  }
 
   default_action {
     type = "forward"
