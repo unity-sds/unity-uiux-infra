@@ -7,7 +7,11 @@ resource "aws_lb" "main" {
   enable_deletion_protection = false
   tags = merge(
     var.tags,
-    var.additional_tags
+    var.additional_tags,
+    {
+      Venue = var.venue
+      Proj = var.project
+    }
   )
 }
 
@@ -30,7 +34,11 @@ resource "aws_alb_target_group" "app" {
 
   tags = merge(
     var.tags,
-    var.additional_tags
+    var.additional_tags,
+    {
+      Venue = var.venue
+      Proj = var.project
+    }
   )
 
 }
@@ -42,7 +50,11 @@ resource "aws_alb_listener" "front_end" {
 
   tags = merge(
     var.tags,
-    var.additional_tags
+    var.additional_tags,
+    {
+      Venue = var.venue
+      Proj = var.project
+    }
   )
 
   default_action {

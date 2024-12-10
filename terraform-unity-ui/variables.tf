@@ -49,6 +49,6 @@ variable "additional_tags" {
 
 // Injected by Marketplace
 variable "venue" {
-  description = "The MCP venue in which the cluster will be deployed (dev, test, prod)"
+  description = "The project venue deployment in which the UI service will be deployed"
   type        = string
 }

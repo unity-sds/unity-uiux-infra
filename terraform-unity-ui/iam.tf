@@ -1,9 +1,13 @@
 resource "aws_iam_role" "ecs_task_execution_role" {
   name = "${var.project}-${var.venue}-dashboard-ecs_task_execution_role"
-  
+
   tags = merge(
     var.tags,
-    var.additional_tags
+    var.additional_tags,
+    {
+      Venue = var.venue
+      Proj = var.project
+    }
   )
 
   assume_role_policy = jsonencode({
