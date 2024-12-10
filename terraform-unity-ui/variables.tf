@@ -34,8 +34,21 @@ variable "tags" {
   type        = map(string)
 }
 
+variable "additional_tags" {
+  description = "Additional Resource Tags"
+  type        = map(string)
+  default     = {
+    ServiceArea = "uiux"
+    CapVersion = "0.8.0"
+    Component = "navbar"
+    CreatedBy = "uiux"
+    Env = "dev"
+    Stack = "ui"
+  }
+}
+
 // Injected by Marketplace
 variable "venue" {
-  description = "The MCP venue in which the cluster will be deployed (dev, test, prod)"
+  description = "The project venue deployment in which the UI service will be deployed"
   type        = string
 }

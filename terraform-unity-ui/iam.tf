@@ -1,15 +1,14 @@
 resource "aws_iam_role" "ecs_task_execution_role" {
   name = "${var.project}-${var.venue}-dashboard-ecs_task_execution_role"
-  tags = {
-    Venue = "dev"
-    ServiceArea = "uiux"
-    CapVersion = "0.8.0"
-    Component = "navbar"
-    Proj = "Unity"
-    CreatedBy = "uiux"
-    Env = "dev"
-    Stack = "ui"
-  }
+
+  tags = merge(
+    var.tags,
+    var.additional_tags,
+    {
+      Venue = var.venue
+      Proj = var.project
+    }
+  )
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
