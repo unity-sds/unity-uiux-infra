@@ -38,11 +38,9 @@ variable "additional_tags" {
   description = "Additional Resource Tags"
   type        = map(string)
   default     = {
-    Venue = "dev"
     ServiceArea = "uiux"
     CapVersion = "0.8.0"
     Component = "navbar"
-    Proj = "unity"
     CreatedBy = "uiux"
     Env = "dev"
     Stack = "ui"
