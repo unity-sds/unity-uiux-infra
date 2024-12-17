@@ -1,5 +1,5 @@
 resource "aws_ecs_cluster" "main" {
-  name = "${var.project}-${var.venue}-dashboard-cluster"
+  name = "${var.project}-${var.venue}-ui-cluster"
   tags = merge(
     var.tags,
     var.additional_tags,
@@ -11,7 +11,7 @@ resource "aws_ecs_cluster" "main" {
 }
 
 resource "aws_ecs_task_definition" "app" {
-  family = "${var.project}-${var.venue}-dashboard-app"
+  family = "${var.project}-${var.venue}-ui-app"
   execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
   network_mode = "awsvpc"
   requires_compatibilities = ["FARGATE"]
@@ -20,7 +20,7 @@ resource "aws_ecs_task_definition" "app" {
   container_definitions = jsonencode(
     [
       {
-        name = "dashboard"
+        name = "ui"
         image = var.app_image
         environment = [
           {
@@ -41,11 +41,11 @@ resource "aws_ecs_task_definition" "app" {
           },
           {
             name = "ENV_UNITY_UI_BASE_PATH"
-            value = "/${var.project}/${var.venue}/dashboard"
+            value = "/${var.project}/${var.venue}/ui"
           },
           {
             name = "ENV_UNITY_UI_AUTH_OAUTH_REDIRECT_URI"
-            value = "https://www.${data.aws_ssm_parameter.shared_services_domain.value}:4443/${var.project}/${var.venue}/dashboard"
+            value = "https://www.${data.aws_ssm_parameter.shared_services_domain.value}:4443/${var.project}/${var.venue}/ui"
           },
           {
             name = "ENV_UNITY_UI_AUTH_OAUTH_LOGOUT_ENDPOINT"
@@ -88,7 +88,7 @@ resource "aws_ecs_task_definition" "app" {
 }
 
 resource "aws_ecs_service" "main" {
-  name            = "${var.project}-${var.venue}-dashboard-service"
+  name            = "${var.project}-${var.venue}-ui-service"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = var.app_count
@@ -111,7 +111,7 @@ resource "aws_ecs_service" "main" {
 
   load_balancer {
     target_group_arn = aws_alb_target_group.app.id
-    container_name = "dashboard"
+    container_name = "ui"
     container_port = 8080
   }
 
