@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name = "${var.project}-${var.venue}-dashboard-ecs_task_execution_role"
+  name = "${var.project}-${var.venue}-ui-ecs_task_execution_role"
 
   tags = merge(
     var.tags,
