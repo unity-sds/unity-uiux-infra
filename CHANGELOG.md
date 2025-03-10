@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated proxy configuration so that we use the term `portal` instead of `ui`. [#56](https://github.com/unity-sds/unity-portal/issues/56)
+- Changed folder name from `terraform-unity-ui` to `terraform-unity-portal` [#18](https://github.com/unity-sds/unity-uiux-infra/issues/18)
+
+### Fixed
+
+- Portal container, was referencing `unity-ui` repo instead of `unity-portal` [#20](https://github.com/unity-sds/unity-uiux-infra/issues/20)
 
 ## [0.2.0] 2025-01-14
 
