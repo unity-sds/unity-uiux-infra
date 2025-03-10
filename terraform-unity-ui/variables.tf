@@ -6,7 +6,7 @@ variable "app_count" {
 
 variable "app_image" {
   description = "The docker image to run the application."
-  default = "ghcr.io/unity-sds/unity-ui/unity-ui-application:latest"
+  default = "ghcr.io/unity-sds/unity-ui/unity-portal-application:0.9.0-unstable"
   type = string
 }
 
@@ -39,7 +39,7 @@ variable "additional_tags" {
   type        = map(string)
   default     = {
     ServiceArea = "uiux"
-    CapVersion = "0.8.0"
+    CapVersion = "0.9.0"
     Component = "navbar"
     CreatedBy = "uiux"
     Env = "dev"

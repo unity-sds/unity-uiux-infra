@@ -4,7 +4,7 @@ resource "aws_ssm_parameter" "uiux_ui_proxy_config" {
   type       = "String"
   value      = <<-EOT
 
-    <location "/${var.project}/${var.venue}/ui">
+    <location "/${var.project}/${var.venue}/portal">
       ProxyHTMLEnable on
       RequestHeader unset Accept-Encoding
       ProxyHTMLCHarsetOut *
@@ -13,7 +13,7 @@ resource "aws_ssm_parameter" "uiux_ui_proxy_config" {
       Header always set Strict-Transport-Security "max-age=63072000"
       ProxyPass "http://${aws_lb.main.dns_name}:8080/" retry=5 disablereuse=On
       ProxyPassReverse "http://${aws_lb.main.dns_name}:8080/"
-      ProxyHTMLURLMap / /${var.project}/${var.venue}/ui/
+      ProxyHTMLURLMap / /${var.project}/${var.venue}/portal/
     </location>
 
 EOT
