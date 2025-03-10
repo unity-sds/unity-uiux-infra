@@ -6,7 +6,7 @@ variable "app_count" {
 
 variable "app_image" {
   description = "The docker image to run the application."
-  default = "ghcr.io/unity-sds/unity-ui/unity-portal-application:latest"
+  default = "ghcr.io/unity-sds/unity-ui/unity-portal-application:0.9.0-unstable"
   type = string
 }
 
