@@ -39,7 +39,7 @@ variable "additional_tags" {
   type        = map(string)
   default     = {
     ServiceArea = "uiux"
-    CapVersion = "0.9.0-398b147"
+    CapVersion = "0.9.0-be9c32c"
     Component = "navbar"
     CreatedBy = "uiux"
     Env = "dev"
