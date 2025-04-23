@@ -5,12 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.3.0] (Unreleased)
+## [0.3.0] 2025-04-23
 
 ### Changed
 
 - Updated proxy configuration so that we use the term `portal` instead of `ui`. [#56](https://github.com/unity-sds/unity-portal/issues/56)
 - Changed folder name from `terraform-unity-ui` to `terraform-unity-portal` [#18](https://github.com/unity-sds/unity-uiux-infra/issues/18)
+- Updated CapVersion tag so that it matches the version of the Portal Container being deployed. This is managed manually.
 
 ### Fixed
 
