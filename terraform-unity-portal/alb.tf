@@ -1,9 +1,10 @@
 resource "aws_lb" "main" {
   name = "${var.project}-${var.venue}-ui-lb"
-  internal = false
+  internal = true
   load_balancer_type = "application"
-  subnets = local.public_subnet_ids
-  security_groups = [aws_security_group.ecs_sg.id]
+  preserve_host_header = true
+  subnets = local.private_subnet_ids
+  security_groups = [aws_security_group.alb_sg.id]
   enable_deletion_protection = false
   tags = merge(
     var.tags,

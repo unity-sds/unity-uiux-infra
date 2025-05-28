@@ -26,3 +26,23 @@ data "aws_ssm_parameter" "shared_services_domain" {
 data "aws_ssm_parameter" "aws_account_region" {
   name = "/unity/shared-services/aws/account/region"
 }
+
+data "aws_subnet" "private_subnets" {
+  for_each = "${toset(local.private_subnet_ids)}"
+  id       = "${each.value}"
+}
+
+data "aws_subnet" "public_subnets" {
+  for_each = "${toset(local.public_subnet_ids)}"
+  id       = "${each.value}"
+}
+
+data "aws_security_groups" "venue_httpd_proxy_sg" {
+  filter {
+    name   = "group-name"
+    values = ["${var.project}-${var.venue}-ecs_service_sg"]
+  }
+  tags = {
+    Service = "U-CS"
+  }
+}
