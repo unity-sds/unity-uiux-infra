@@ -5,11 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.4.0] (Unreleased)
+## [0.4.0] 2025-06-29
 
 ### Added
 
 - Integrated new security group for ALB so that it's ingress rule can be linked to the project's venue httpd proxy so that the proxy is the only service that can access it. [#22](https://github.com/unity-sds/unity-uiux-infra/issues/22)
+- Updated portal application container to 0.10.0
 
 ### Changed
 
